@@ -26,4 +26,4 @@ function uploadAndclassifyImage(){
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
-$('#btnResNetUpload').click(uploadAndclassifyImage())
+$('#btnResnetUpload').click(uploadAndclassifyImage)
