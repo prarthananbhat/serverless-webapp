@@ -21,9 +21,21 @@ function uploadAndclassifyImage(){
         contentType : false,
         mimeType : "image/jpeg"
     }).done(function (response) {
+
         console.log(response);
-        document.getElementById('show_image').textContent = response;
+        var rawResponse = response; // truncated for example
+
+        // convert to Base64
+        var b64Response = btoa(rawResponse);
+
+        // create an image
+        var outputImg = document.createElement('img');
+        outputImg.src = 'data:image/jpeg;base64,'+b64Response;
+
+        // append it to your page
+        document.body.appendChild(outputImg);
+        $('#btnResnetUpload').click(uploadAndclassifyImage)
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
-$('#btnResnetUpload').click(uploadAndclassifyImage)
+
