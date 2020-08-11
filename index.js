@@ -15,15 +15,15 @@ function uploadAndclassifyImage(){
         async : true,
         crossDomain : true,
         method : 'POST',
-        url : 'https://1z7osv3nj8.execute-api.ap-south-1.amazonaws.com/dev/align_image',
+        url : 'https://ic87evu6q3.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
         data : formData,
         processData : false,
         contentType : false,
-        mimeType : "image/jpeg"
+        mimeType : "multipart/form-data"
     }).done(function (response) {
         console.log(response);
-        $('#btnResnetUpload').click(uploadAndclassifyImage)
+        document.getElementById('result').textContent = response;
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
-
+$('#btnResnetUpload').click(uploadAndclassifyImage)
