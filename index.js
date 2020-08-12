@@ -23,7 +23,9 @@ function uploadAndclassifyImage(){
         mimeType : "application/json"
     }).done(function (response) {
         console.log(response);
-        var rawResponse = response; // truncated for example
+        // var rawResponse = response; // truncated for example
+        var response = JSON.parse(response);
+        var image = response.ImageBytes ; //# => 2231f87c-a62c-4c2c-8f5d-b76d11942301
 
         // convert to Base64
         // var b64Response = btoa(rawResponse);
@@ -31,7 +33,7 @@ function uploadAndclassifyImage(){
         // create an image
         var outputImg = document.createElement('img');
         // outputImg.src = 'data:image/jpeg;base64,'+b64Response;
-        outputImg.src = rawResponse;
+        outputImg.src = image;
 
         // append it to your page
         document.body.appendChild(outputImg);
