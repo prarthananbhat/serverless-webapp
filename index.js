@@ -26,11 +26,12 @@ function uploadAndclassifyImage(){
         var rawResponse = response; // truncated for example
 
         // convert to Base64
-        var b64Response = btoa(rawResponse);
+        // var b64Response = btoa(rawResponse);
 
         // create an image
         var outputImg = document.createElement('img');
-        outputImg.src = 'data:image/jpeg;base64,'+b64Response;
+        // outputImg.src = 'data:image/jpeg;base64,'+b64Response;
+        outputImg.src = rawResponse;
 
         // append it to your page
         document.body.appendChild(outputImg);
