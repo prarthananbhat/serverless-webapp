@@ -20,7 +20,7 @@ function uploadAndclassifyImage(){
         data : formData,
         processData : false,
         contentType : false,
-        mimeType : "image/jpeg"
+        mimeType : "application/json"
     }).done(function (response) {
         console.log(response);
         var rawResponse = response; // truncated for example
