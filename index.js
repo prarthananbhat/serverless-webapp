@@ -24,20 +24,14 @@ function uploadAndclassifyImage(){
     }).done(function (response) {
         console.log(response);
         // var rawResponse = response; // truncated for example
-        var response = JSON.parse(response);
-        var image = response.ImageBytes ; //# => 2231f87c-a62c-4c2c-8f5d-b76d11942301
-
-        // convert to Base64
-        // var b64Response = btoa(rawResponse);
-
+        var b64img = response.ImageBytes
+        console.log("***")
+        console.log(b64img)
         // create an image
         var outputImg = document.createElement('img');
-        // outputImg.src = 'data:image/jpeg;base64,'+b64Response;
-        outputImg.src = image;
-
+        outputImg.src = 'data:image/jpeg;base64,'+b64img;
         // append it to your page
         document.body.appendChild(outputImg);
-        //document.getElementById('result').textContent = response;
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
