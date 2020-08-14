@@ -1,5 +1,8 @@
+var loadFile = function(event) {
+    var image = document.getElementById('input'); image.src = URL.createObjectURL(event.target.files[0]);
+};
 function uploadAndclassifyImage(){
-    var fileInput = document.getElementById('resnet34FileUpload').files;
+    var fileInput = document.getElementById('fileinput').files;
     if(!fileInput.length){
         return alert("Please choose a file to upload first");
     }
@@ -23,20 +26,11 @@ function uploadAndclassifyImage(){
         mimeType : "application/json"
     }).done(function (response) {
         console.log(response);
-        // var rawResponse = response; // truncated for example
         var b64img = response.ImageBytes
         console.log("***")
         console.log(b64img)
-        // create an image
-        var outputImg = document.createElement('img');
-        outputImg.src = 'data:image/jpeg;base64,'+b64img;
-        // append it to your page
-        document.body.appendChild(outputImg);
-        // var rawimage = file
-        // var rawImage = document.createElement('img');
-        // outputImg.src = 'data:image/jpeg;base64,'+rawimage;
-        // // append it to your page
-        // document.body.appendChild(rawImage);
+        var output_image = document.getElementById('output');
+        output_image.src = 'data:image/jpeg;base64,'+b64img;
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
