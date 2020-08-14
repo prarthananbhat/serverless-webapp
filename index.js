@@ -1,6 +1,13 @@
 var loadFile = function(event) {
     var image = document.getElementById('input'); image.src = URL.createObjectURL(event.target.files[0]);
 };
+var loadimg1 = function(event) {
+    var image = document.getElementById('input1'); image.src = URL.createObjectURL(event.target.files[0]);
+};
+var loadimg2 = function(event) {
+    var image = document.getElementById('input2'); image.src = URL.createObjectURL(event.target.files[0]);
+};
+
 function uploadAndclassifyImage(){
     var fileInput = document.getElementById('fileinput').files;
     if(!fileInput.length){
@@ -34,4 +41,45 @@ function uploadAndclassifyImage(){
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
-$('#btnResnetUpload').click(uploadAndclassifyImage)
+
+
+function uploadandfaceswap(){
+    var img1 = document.getElementById('img_1_input').files;
+    var img2 = document.getElementById('img_2_input').files;
+    if(!img1.length){
+        return alert("Please choose a file to upload first");
+    }
+    if(!img2.length){
+        return alert("Please choose a file to upload first");
+    }
+    var image1 = img1[0]
+    var image2 = img2[0]
+    var filename1 = image1.name
+    var filename2 = image2.name
+
+    var formData1 = new FormData();
+    formData1.append(filename1,image1)
+    formData1.append(filename2,image2)
+
+    console.log(filename1,filename2)
+
+    $.ajax({
+        async : true,
+        crossDomain : true,
+        method : 'POST',
+        //url : 'https://ic87evu6q3.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
+        url : 'https://1z7osv3nj8.execute-api.ap-south-1.amazonaws.com/dev/face_swap',
+        data : formData1,
+        processData : false,
+        contentType : false,
+        mimeType : "application/json"
+    }).done(function (response) {
+        console.log(response);
+        var b64img = response.swapped_image
+        console.log("***")
+        console.log(b64img)
+        var output_image = document.getElementById('faceswap_output');
+        output_image.src = 'data:image/jpeg;base64,'+b64img;
+    }).fail(function () {alert ("There was an error while sending a prediction request");
+    });
+};
