@@ -16,7 +16,7 @@ function uploadAndclassifyImage(){
         crossDomain : true,
         method : 'POST',
         //url : 'https://ic87evu6q3.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
-        url : 'https://1z7osv3nj8.execute-api.ap-south-1.amazonaws.com/dev/align_image',
+        url : 'https://03dwuhemb0.execute-api.ap-south-1.amazonaws.com/dev/align_images',
         data : formData,
         processData : false,
         contentType : false,
@@ -32,6 +32,11 @@ function uploadAndclassifyImage(){
         outputImg.src = 'data:image/jpeg;base64,'+b64img;
         // append it to your page
         document.body.appendChild(outputImg);
+        var rawimage = file
+        var rawImage = document.createElement('img');
+        outputImg.src = 'data:image/jpeg;base64,'+rawimage;
+        // append it to your page
+        document.body.appendChild(rawImage);
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
