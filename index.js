@@ -32,11 +32,11 @@ function uploadAndclassifyImage(){
         outputImg.src = 'data:image/jpeg;base64,'+b64img;
         // append it to your page
         document.body.appendChild(outputImg);
-        var rawimage = file
-        var rawImage = document.createElement('img');
-        outputImg.src = 'data:image/jpeg;base64,'+rawimage;
-        // append it to your page
-        document.body.appendChild(rawImage);
+        // var rawimage = file
+        // var rawImage = document.createElement('img');
+        // outputImg.src = 'data:image/jpeg;base64,'+rawimage;
+        // // append it to your page
+        // document.body.appendChild(rawImage);
     }).fail(function () {alert ("There was an error while sending a prediction request");
     });
 };
