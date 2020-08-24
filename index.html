@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="basic.css">
-    <title>Resnet34</title>
+    <title>AI Playbook</title>
 </head>
 <body>
+<h2> Assignments @ The School of AI ></h2>
+<div class = "imagenet_prediction" >
+    <p> Imagenet Prediction using MobilenetV2 model</p>
+    <div class="row">
+        <div class="column">
+            <p>Upload an image</p>
+            <p><input type='file' name = "file" id="prediction_fileinput" onchange="load_prediction_fileinput(event)" /></p>
+        </div>
+        <div class="row">
+            <div class="column">
+                <p><img id="prediction_input" style="width:100%" /></p>
+                <input type="button", id = "prediction_upload", class = "button", value = "Classify Image", onclick="uploadAndClassifyImage()">
+                <p id ="prediction_output"></p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class = "grid-x gird-margin-x" style = "margin-top: 2%;">
     <div class ="large-12-cell">
-        <h4 id = "ImageClassifiers">ImageClassifiers</h4>
+        <h4 id = "image_alignment">Image Alignement</h4>
         <div class ="large-4-cell">
             <label for = "resnet34FileUpload">Please choose the image file you want to Align</label>
         </div>
@@ -19,7 +36,7 @@
           <p><label for="fileinput" style="cursor: pointer;">Upload Image</label></p>
       </div>
       <div class="column">
-          <input type="button", id = "btnResnetUpload", class = "button", value = "Align Image", onclick="uploadAndclassifyImage()">
+          <input type="button", id = "btnResnetUpload", class = "button", value = "Align Image", onclick="uploadAndAlignImage()">
       </div>
     </div>
     <div class="row">
@@ -64,7 +81,24 @@
         </div>
     </div>
 </div>
-
+<div class = "face_detcetion" >
+    <h4> Face Recognition </h4>
+    <p> Detect Faces from the list </p>
+    <p> ['Andrw_Ng', 'Arnab_Goswami', 'Arvind_Kejriwal', 'Elon_Musk', 'MS_Dhoni', 'Mary_Kom', 'Narayan_Mrthy', 'Rahul_Gandhi', 'Smriti_Irani', 'Sushanth_Singh_Rajput']</p>
+    <div class="row">
+        <div class="column">
+            <p>Upload an image</p>
+            <p><input type='file' name = "file" id="face_recognition_fileinput" onchange="load_face_recognition_fileinput(event)" /></p>
+        </div>
+        <div class="row">
+            <div class="column">
+                <p><img id="face_recognistion_input" style="width:100%" /></p>
+                <input type="button", id = "face_recognition_upload", class = "button", value = "Who is it?", onclick="uploadAndRecognizeFace_1()">
+                <p id ="face_recognistion_output"></p>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 <script src = "js/jquery-3.3.1.min.js"></script>
