@@ -185,7 +185,7 @@ function uploadAndRecognizeFace_1(){
             async : true,
             crossDomain : true,
             method : 'POST',
-            url : 'https://03dwuhemb0.execute-api.ap-south-1.amazonaws.com/dev/classify_image_1',
+            url : 'https://03dwuhemb0.execute-api.ap-south-1.amazonaws.com/dev/classify_image',
             data : b64img,
             processData : false,
             contentType : false,
@@ -193,8 +193,13 @@ function uploadAndRecognizeFace_1(){
         }).done(function (response) {
             console.log(response);
             console.log(response.prediction)
+
             var output  = document.getElementById('face_recognistion_output');
             output.innerHTML = response.prediction;
+            var outputimg = document.getElementById('face_recognistion_outputimg')
+            outputimg.src = 'data:image/jpeg;base64,'+response.image;
+            var confidence = document.getElementById('confidence')
+            confidence.src = 'data:image/jpeg;base64,'+response.confidence;
         }).fail(function () {alert ("There was an error while sending a prediction request");
         });
 
